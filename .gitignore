@@ -1,1 +1,3 @@
-CLAUDE.md
+.venv/
+.env
+CLAUDE.mdweek3-ingestion/movie_ids.json
