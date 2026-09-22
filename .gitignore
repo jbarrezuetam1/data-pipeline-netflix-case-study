@@ -1,3 +1,8 @@
 .venv/
 .env
-CLAUDE.mdweek3-ingestion/movie_ids.json
+CLAUDE.md
+week3-ingestion/movie_ids.json
+week3-ingestion/movie_ids.json.gz
+week4-bronze-layer/raw_files/
+week4-bronze-layer/salida.txt
+__pycache__/
