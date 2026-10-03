@@ -5,4 +5,6 @@ week3-ingestion/movie_ids.json
 week3-ingestion/movie_ids.json.gz
 week4-bronze-layer/raw_files/
 week4-bronze-layer/salida.txt
+week5-silver-layer/salida.txt
+week5-silver-layer/spark_session.py
 __pycache__/
