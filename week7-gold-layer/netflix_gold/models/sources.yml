@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: silver
+    meta:
+      external_location: "iceberg_scan('s3://bronze/silver/{name}')"
+    tables:
+      - name: shareholder_letter_regional_breakdown
+      - name: engagement_report
+      - name: tmdb_movies

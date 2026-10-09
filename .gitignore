@@ -9,4 +9,6 @@ week5-silver-layer/salida.txt
 week5-silver-layer/spark_session.py
 week6-data-quality/salida.txt
 week6-data-quality/spark_session.py
+week7-gold-layer/netflix_gold/profiles.yml
+week7-gold-layer/logs/
 __pycache__/
