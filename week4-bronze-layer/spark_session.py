@@ -10,7 +10,7 @@ from pyspark.sql import SparkSession
 # MinIO connection details. These match the credentials set in
 # docker-compose.yml. A later step moves these into .env instead
 # of hardcoding them here.
-MINIO_ENDPOINT = "http://localhost:9000"
+MINIO_ENDPOINT = os.environ.get("MINIO_ENDPOINT", "http://localhost:9000")
 MINIO_ACCESS_KEY = "minioadmin"
 MINIO_SECRET_KEY = "minioadmin123"
 
@@ -51,6 +51,8 @@ def get_spark_session(app_name: str = "netflix-pipeline") -> SparkSession:
         )
         # MinIO runs without SSL locally, so SSL is disabled for this connection.
         .config("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
+        .config("spark.hadoop.fs.s3a.connection.timeout", "200000")
+        .config("spark.hadoop.fs.s3a.connection.establish.timeout", "60000")
         .getOrCreate()
     )
     return spark
