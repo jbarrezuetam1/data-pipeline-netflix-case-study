@@ -1,0 +1,60 @@
+name: CI
+
+# Trigger: run on every push to main and on every pull request.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install ruff
+        run: pip install ruff
+      - name: Lint Python code
+        run: ruff check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # The connectors import spark_session (which imports pyspark) at the
+      # top of the file, so pyspark must be installed even though the unit
+      # tests never start Spark.
+      - name: Install test dependencies
+        run: pip install pytest pandas pdfplumber pyspark==4.0.1
+      - name: Run unit tests
+        run: python -m pytest -v
+
+  build:
+    # Always attempt the build, even if lint or tests failed (ADR-012),
+    # but only publish when both passed and the push was to main.
+    needs: [lint, test]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to GitHub Container Registry
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build (and publish if lint and tests passed)
+        uses: docker/build-push-action@v6
+        with:
+          context: week8-orchestration
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.lint.result == 'success' && needs.test.result == 'success' }}
+          tags: ghcr.io/jbarrezuetam1/netflix-pipeline-airflow:latest

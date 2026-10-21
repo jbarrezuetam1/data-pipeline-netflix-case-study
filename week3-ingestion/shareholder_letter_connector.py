@@ -1,5 +1,5 @@
-import pdfplumber
 import pandas as pd
+import pdfplumber
 
 file_path = "week3-ingestion/raw_files/FINAL-Q2-26-Shareholder-Letter.pdf"
 quarters = ["Q2'25", "Q3'25", "Q4'25", "Q1'26", "Q2'26"]

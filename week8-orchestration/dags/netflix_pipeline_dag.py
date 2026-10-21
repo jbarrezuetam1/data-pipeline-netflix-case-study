@@ -7,8 +7,7 @@ using a separate virtual environment (pipeline_venv) that holds the
 pipeline's dependencies, kept isolated from Airflow's own environment.
 """
 
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator

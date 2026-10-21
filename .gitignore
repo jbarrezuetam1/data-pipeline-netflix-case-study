@@ -11,4 +11,7 @@ week6-data-quality/salida.txt
 week6-data-quality/spark_session.py
 week7-gold-layer/netflix_gold/profiles.yml
 week7-gold-layer/logs/
+.pytest_cache/
+.ruff_cache/
+week8-orchestration/logs/
 __pycache__/

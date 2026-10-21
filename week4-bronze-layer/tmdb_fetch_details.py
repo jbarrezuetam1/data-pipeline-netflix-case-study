@@ -10,9 +10,10 @@ skips movies whose details were already saved, instead of re-fetching
 everything from scratch.
 """
 
-import os
 import json
+import os
 import time
+
 import requests
 from dotenv import load_dotenv
 

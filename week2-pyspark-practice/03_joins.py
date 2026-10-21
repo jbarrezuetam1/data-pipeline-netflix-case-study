@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import avg, round
 
 spark = SparkSession.builder.appName("Joins").master("local[*]").getOrCreate()
 

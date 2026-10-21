@@ -1,6 +1,7 @@
 import gzip
 import shutil
 from datetime import date, timedelta
+
 import requests
 
 # TMDB publishes a new export daily; yesterday's file is guaranteed to exist

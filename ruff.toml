@@ -1,0 +1,5 @@
+# Ruff linter configuration (see ADR-012).
+# E4/E7/E9 + F: syntax errors and common bugs (e.g., unused imports).
+# I: import ordering.
+[lint]
+select = ["E4", "E7", "E9", "F", "I"]

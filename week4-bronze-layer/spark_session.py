@@ -5,6 +5,7 @@ Reusable SparkSession builder configured for:
 """
 
 import os
+
 from pyspark.sql import SparkSession
 
 # MinIO connection details. These match the credentials set in
