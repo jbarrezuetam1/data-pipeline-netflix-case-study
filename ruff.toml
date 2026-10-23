@@ -1,4 +1,8 @@
 # Ruff linter configuration (see ADR-012).
+# The Databricks notebook export uses notebook-only names (spark, display,
+# dbutils), so it is excluded from linting.
+extend-exclude = ["week10-databricks-comparison"]
+
 # E4/E7/E9 + F: syntax errors and common bugs (e.g., unused imports).
 # I: import ordering.
 [lint]
