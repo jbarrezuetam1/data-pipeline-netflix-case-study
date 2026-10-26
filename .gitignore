@@ -14,4 +14,6 @@ week7-gold-layer/logs/
 .pytest_cache/
 .ruff_cache/
 week8-orchestration/logs/
+# Generated Parquet exports for Power BI (recreate with week11-dashboard/export_gold_for_bi.py)
+week11-dashboard/exports/
 __pycache__/
